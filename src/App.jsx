@@ -15,6 +15,7 @@ function App() {
     authService
       .getCurrentUser()
       .then((userData) => {
+        console.log(userData)
         if (userData) dispatch(login(userData));
         else dispatch(logout());
       })
@@ -29,7 +30,7 @@ function App() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="w-full min-h-screen bg-black text-white">
+        <div className="w-full min-h-screen">
           <Header />
           <main>
             <Outlet />
@@ -41,3 +42,5 @@ function App() {
 }
 
 export default App;
+
+// Approach 1 : using global state

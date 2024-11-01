@@ -9,17 +9,18 @@ const Authlayout = ({ children, authentication = true }) => {
   const authStatus = useSelector((state) => state.auth.status);
 
   useEffect(() => {
-
     if (authentication == true && authStatus == false) {
-      // Authentication chahincha ,but user is not authenticated 
+      // Authentication chahincha ,but user is not authenticated
       navigate("/login");
-    } else if (authentication == false && authStatus == true ) {
+    } else if (authentication == false && authStatus == true) {
       // Authentication chaidaina ,but user is authenticated
       navigate("/");
     }
+
     setLoader(false);
   }, [authStatus, navigate, authentication]);
 
+  // authentication == true && authStatus == true , then display children
   return loader ? <Loader /> : <>{children}</>;
 };
 

@@ -8,6 +8,7 @@ import {
   Role,
 } from "appwrite";
 import config from "../config/config";
+import authService from "./auth"
 
 let id = 0;
 
@@ -25,7 +26,7 @@ class Services {
     this.bucket = new Storage(this.client);
   }
 
-  async createPost({ title, slug, content, featuredImage, status, userId }) {
+  async createPost({ title, slug, content, featuredImage, status,category, userId,userName }) {
     try {
       return await this.databases.createDocument(
         config.appWriteDatabaseId, // databaseId
@@ -38,8 +39,9 @@ class Services {
           featuredImage,
           status,
           userId,
+          category,
+          userName
         },
-        // [Permission.read(Role.any())]
       );
     } catch (error) {
       console.log("Appwrite Service :" + error);
@@ -110,6 +112,22 @@ class Services {
     } catch (error) {
       console.log("Appwrite Service :" + error);
       // throw error;
+    }
+  }
+
+  async getAllPostOfCurrentUser(){
+    try {
+      const userData = await authService.getCurrentUser();
+
+
+     return await this.databases.listDocuments(
+        config.appWriteDatabaseId, // databaseId
+        config.appWriteCollectionId, // collectionId
+        [Query.equal("userId", userData.$id)] // queries (optional)
+    );
+    } catch (error) {
+      console.log(error)
+      return error;
     }
   }
 

@@ -31,10 +31,11 @@ const Login = () => {
 
   return (
       <div className="w-full h-full flex justify-center flex-col items-center">
-        <h2 className="text-4xl font-semibold my-10">Login</h2>
+        <div className="w-[400px] p-10 shadow-2xl rounded-md">
+        <h2 className="text-4xl font-serif mb-5 w-full text-center">Login</h2>
         <form
           onSubmit={handleSubmit(loginHandler)}
-          className="w-full max-w-lg  p-10 rounded-xl border-[1px] border-white flex flex-col gap-9"
+          className="w-full max-w-lg rounded-xl border-[1px] border-white flex flex-col gap-9"
           >
           <Input
             label="email :"
@@ -54,6 +55,8 @@ const Login = () => {
           <Button type="submit">Sign In</Button>
           {errors && <p className="text-red-600 text-center">{errors}</p>}
         </form>
+
+        </div>
       </div>
   );
 };

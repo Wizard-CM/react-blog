@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const UnderlineOnHover = ({ navItem }) => {
   return (
     <div className="relative group">
       <span className="text-lg font-semibold">
-        <NavLink className={({isActive}) => `font-light text-[18px] transition-all duration-300  ${isActive && "text-gray-400"}`} to={navItem.slug}>
+        <NavLink className={({isActive}) => ` transition-all duration-300  ${isActive && "text-gray-400"}`} to={navItem.slug}>
           {navItem.name}
         </NavLink>
       </span>

@@ -17,7 +17,10 @@ const LogoutBtn = () => {
   return (
     <div className="relative group">
       <span className="text-lg font-semibold">
-        <button className="font-light text-[18px]" onClick={logoutHandler}>
+        <button
+          className={`px-4 py-1 text-[1rem]  text-white rounded-full bg-gray-900`}
+          onClick={logoutHandler}
+        >
           Logout
         </button>
       </span>
