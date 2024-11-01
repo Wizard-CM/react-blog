@@ -4,9 +4,9 @@ import appwriteService from "../appwrite/database";
 import { Link } from "react-router-dom";
 import Heading from "../components/Heading";
 import Blog_Item from "../components/Home/Blog_Item";
-import Category from "../components/Home/category";
 import { Container, Loader } from "../components";
 import { month } from "../data";
+import Category from "../components/Home/Category";
 
 const categories = ["All"];
 
