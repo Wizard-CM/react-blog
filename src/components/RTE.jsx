@@ -1,4 +1,6 @@
-import React from "react";
+import React, { lazy } from "react";
+
+// const {Editor} = lazy(() => import("@tinymce/tinymce-react"))
 import { Editor } from "@tinymce/tinymce-react";
 
 function RTE({ label, name, defaultValue = "", onChange }, ref) {
@@ -6,6 +8,7 @@ function RTE({ label, name, defaultValue = "", onChange }, ref) {
     <div className="w-full">
       {label && <label className="inline-block mb-1 pl-1">{label}</label>}
       <Editor
+        scriptLoading={{ async: true }}
         apiKey="lj51pkv7k5tp7cwvyjj93bdgxynn98lcduyyv4r9bd2ldnpy"
         onEditorChange={(content) => {
           onChange(content);
