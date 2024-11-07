@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/authSlice";
@@ -33,7 +33,9 @@ function App() {
         <div className="w-full min-h-screen">
           <Header />
           <main>
+          <Suspense fallback={<Loader />}>
             <Outlet />
+          </Suspense>
           </main>
         </div>
       )}

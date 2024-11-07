@@ -24,6 +24,7 @@ export default function PostForm({ post }) {
   const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
+    console.log(data)
     // since post already exists , so it's Edit Mode
     if (post) {
       const file = data.image[0]
@@ -51,6 +52,10 @@ export default function PostForm({ post }) {
       const file = await appwriteService.uploadFile(data.image[0]);
 
       if (file) {
+        console.log(file.bucketId)
+        const img = new Image();
+        img.src = appwriteService.getFilePreview(file.bucketId);
+
         const fileId = file.$id;
         data.featuredImage = fileId;
         const dbPost = await appwriteService.createPost({
@@ -65,6 +70,8 @@ export default function PostForm({ post }) {
         }
       }
     }
+
+   
   };
 
   return (
@@ -100,7 +107,7 @@ export default function PostForm({ post }) {
           onChange={(content) => {
             setValue("content", content);
           }}
-          {...register("content", { required: "Content is required" })}
+          {...register("content")}
           />
           {errors.content && (
             <p className="text-red-600 text-[0.8rem] m-0 mb-4" role="alert">

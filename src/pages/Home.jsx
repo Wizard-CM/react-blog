@@ -102,13 +102,14 @@ const Newhome = () => {
                 posts.slice(3).map(post => {
                   const newdate = new Date(post?.$createdAt)
                   return (
-                    <Link to={`/post/${post.$id}`} className="" key={post.$id}>
+                    <Link to={`/post/${post.$id}`} className="" key={post.$id}> 
                     <div className="flex gap-3 items-center border-b-[1px] border-gray-300 py-3">
                       <div className="left">
                         <img
                           src={appwriteService.getFilePreview(post?.featuredImage)}
                           className="w-24 h-16 shadow-sm object-cover"
                           alt=""
+                          loading="lazy"
                         />
                       </div>
                       <div className="right w-full">

@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import appwriteService from "../../appwrite/database";
 import { Link } from "react-router-dom";
 import Like from "../../SVG/Like";
 import { month } from "../../data";
+import { Blurhash } from "react-blurhash";
 
 const Blog_Item = ({ post, newdate }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const [opacity, setOpacity] = useState("opacity-[0]");
+  const src = appwriteService.getFilePreview(post?.featuredImage);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImageLoaded(true);
+      setOpacity("opacity-[1]");
+    };
+
+    img.src = src;
+  }, []);
+
   return (
     <Link to={`/post/${post.$id}`}>
       <div className="flex items-center border-b-[1px] border-gray-300 py-1">
@@ -32,11 +48,27 @@ const Blog_Item = ({ post, newdate }) => {
           </div>
         </div>
         <div className="right">
-          <img
-            src={appwriteService.getFilePreview(post?.featuredImage)}
-            className="w-44 h-28 shadow-sm object-cover"
-            alt=""
-          />
+          <div className="relative w-44 h-28">
+            <img
+              src={src}
+              className={`absolute top-0 left-0 ${
+                imageLoaded && "z-[100]"
+              } w-full h-full shadow-sm object-cover transition-all duration-1000 ease-in-out ${opacity}`}
+              style={{ opacity: {} }}
+              alt=""
+              loading="lazy"
+            />
+            <Blurhash
+              hash={post?.blurHash}
+              width={"100%"}
+              height={"100%"}
+              resolutionX={32}
+              resolutionY={32}
+              punch={1}
+              className={`absolute top-0 left-0 z-10`}
+            />
+            {/* <div className="w-full h-full absolute top-0 left-0 z-10 bg-[rgba(255, 255, 255,0.1)] backdrop-blur-md"></div> */}
+          </div>
         </div>
       </div>
     </Link>

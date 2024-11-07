@@ -29,7 +29,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Loader from "./components/Loader.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,61 +37,49 @@ const router = createBrowserRouter(
       <Route
         path="login"
         element={
-          <Suspense fallback={<Loader />}>
-            <Authlayout authentication={false}>
-              <Login />
-            </Authlayout>
-          </Suspense>
+          <Authlayout authentication={false}>
+            <Login />
+          </Authlayout>
         }
       />
       <Route
         path="signup"
         element={
-          <Suspense fallback={<Loader />}>
-            <Authlayout authentication={false}>
-              <Signup />
-            </Authlayout>
-          </Suspense>
+          <Authlayout authentication={false}>
+            <Signup />
+          </Authlayout>
         }
       />
       <Route
         path="my-posts"
         element={
-          <Suspense fallback={<Loader />}>
-            <Authlayout authentication>
-              <MyPosts />
-            </Authlayout>
-          </Suspense>
+          <Authlayout authentication>
+            <MyPosts />
+          </Authlayout>
         }
       />
       <Route
         path="add-post"
         element={
-          <Suspense fallback={<Loader />}>
-            <Authlayout authentication>
-              <AddPost />
-            </Authlayout>
-          </Suspense>
+          <Authlayout authentication>
+            <AddPost />
+          </Authlayout>
         }
       />
       <Route
         path="edit-post/:slug"
         element={
-          <Suspense fallback={<Loader />}>
-            <Authlayout authentication>
-              <EditPost />
-            </Authlayout>
-          </Suspense>
+          <Authlayout authentication>
+            <EditPost />
+          </Authlayout>
         }
       />
       <Route
         path="post/:slug"
         element={
-          <Suspense fallback={<Loader />}>
-            <Authlayout authentication>
-              <Post />
-            </Authlayout>
-          </Suspense>
+          <Authlayout authentication>
+            <Post />
+          </Authlayout>
         }
       />
     </Route>
