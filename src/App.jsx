@@ -33,9 +33,7 @@ function App() {
         <div className="w-full min-h-screen">
           <Header />
           <main>
-          <Suspense fallback={<Loader />}>
             <Outlet />
-          </Suspense>
           </main>
         </div>
       )}

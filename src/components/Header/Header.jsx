@@ -100,7 +100,9 @@ const Header = () => {
           >
             <Menu />
           </div>
-            <div className={`menu bg-white fixed h-full w-[200px] top-0 flex ${sideBar ? "right-0":"-right-[100%]"} shadow-lg transition-all
+
+
+            <div className={`menu bg-white fixed z-[1000] h-full w-[200px] top-0 flex ${sideBar ? "right-0":"-right-[100%]"} shadow-lg transition-all
             duration-500 ease-in-out`}>
               <ul className="flex flex-col links gap-2 px-5 w-full pt-24">
                 {navItems.map((navItem) => {
