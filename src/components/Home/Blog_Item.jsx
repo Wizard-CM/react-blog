@@ -52,7 +52,7 @@ const Blog_Item = ({ post, newdate }) => {
             <img
               src={src}
               className={`absolute top-0 left-0 ${
-                imageLoaded && "z-[100]"
+                imageLoaded && "z-[11]"
               } w-full h-full shadow-sm object-cover transition-all duration-1000 ease-in-out ${opacity}`}
               style={{ opacity: {} }}
               alt=""

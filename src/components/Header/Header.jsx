@@ -93,7 +93,7 @@ const Header = () => {
           </ul>
 
           <div
-            className="fixed top-9 right-8 z-10 sm:hidden"
+            className="fixed top-9 right-8 z-[13] sm:hidden"
             onClick={() => {
               setSideBar((prev) => !prev);
             }}
@@ -102,13 +102,16 @@ const Header = () => {
           </div>
 
 
-            <div className={`menu bg-white fixed z-[1000] h-full w-[200px] top-0 flex ${sideBar ? "right-0":"-right-[100%]"} shadow-lg transition-all
+            <div className={`menu bg-white fixed z-[12] h-full w-[200px] top-0 flex ${sideBar ? "right-0":"-right-[100%]"} shadow-lg transition-all
             duration-500 ease-in-out`}>
               <ul className="flex flex-col links gap-2 px-5 w-full pt-24">
                 {navItems.map((navItem) => {
                   return navItem.active ? (
                     <NavLink
                       key={navItem.name}
+                      onClick={() => {
+                        setSideBar((prev) => !prev);
+                      }}
                       to={navItem.slug}
                       className={({ isActive }) =>
                         `  w-full border-b-[1px] py-3 border-gray-700`
